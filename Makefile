@@ -147,7 +147,7 @@ clean:
 
 sim: 
 	rm -f $(PROJ).vcd
-	iverilog  -o $(PROJ).vvp $(PROJ).v $(PROJ)_tb.v
+	iverilog  -o $(PROJ).vvp spi.v spi_tb.v
 	vvp $(PROJ).vvp
 	export DISPLAY=:0
 
