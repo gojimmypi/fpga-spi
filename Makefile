@@ -80,16 +80,16 @@ endif
 endif
 
 help: 
-	@printf " --all          main build of everything to create $(PROJ).bit   \n"
-	@printf " --clean        remove files that are created with this Makefile \n"
-	@printf " --install      install toolchain and all dependencies           \n"
-	@printf " --prog         create binary file and upload using $(ICEPROG)   \n"
-	@printf " --sim          run iverilog and then launch gtkwave for $(PROJ) \n"
-	@printf " --xserver      primaily for WSL users, load cygwin64 startxwin  \n"
-	@printf "                                                                 \n"
-	@printf "Project-named parameters:                                        \n"
-	@printf " --$(PROJ).bit  same as --all                                    \n"
-	@printf "                                                                 \n"
+	@printf " all          main build of everything to create $(PROJ).bit   \n"
+	@printf " clean        remove files that are created with this Makefile \n"
+	@printf " install      install toolchain and all dependencies           \n"
+	@printf " prog         create binary file and upload using $(ICEPROG)   \n"
+	@printf " sim          run iverilog and then launch gtkwave for $(PROJ) \n"
+	@printf " xserver      primaily for WSL users, load cygwin64 startxwin  \n"
+	@printf "                                                               \n"
+	@printf "Project-named parameters:                                      \n"
+	@printf " $(PROJ).bit  same as --all                                    \n"
+	@printf "                                                               \n"
 
 
 # main build
