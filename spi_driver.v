@@ -1,12 +1,14 @@
 `timescale 1ns / 1ps
 
-module SPI_driver(CLK_3_33_MHZ, sck, mosi, miso, ssel, leds);
-  input wire CLK_3_33_MHZ;
+`include "spi.v"
+
+module SPI_driver(clk_25mhz, sck, mosi, miso, ssel, led);
+  input wire clk_25mhz;
   input wire sck;
   input wire mosi;
   output wire miso;
   input wire ssel;
-  output wire[7:0] leds;
+  output wire[7:0] led;
   
   wire byteReceived;
   wire[7:0] receivedData;
@@ -14,18 +16,18 @@ module SPI_driver(CLK_3_33_MHZ, sck, mosi, miso, ssel, leds);
   reg[7:0] dataToSend;
   reg[7:0] receivedDataBuffer;
   
-  SPI_slave spi_slave(CLK_3_33_MHZ, sck, mosi, miso, ssel, byteReceived, receivedData, dataNeeded, dataToSend);
+  SPI_slave spi_slave(clk_25mhz, sck, mosi, miso, ssel, byteReceived, receivedData, dataNeeded, dataToSend);
 
-  always @(posedge CLK_3_33_MHZ) begin
+  always @(posedge clk_25mhz) begin
     if(byteReceived)
       receivedDataBuffer <= receivedData;
   end
   
-  always @(posedge CLK_3_33_MHZ) begin
+  always @(posedge clk_25mhz) begin
     if(dataNeeded)
       dataToSend <= receivedDataBuffer;
   end
   
-  assign leds = receivedDataBuffer;
+  assign led = receivedDataBuffer;
     
 endmodule
