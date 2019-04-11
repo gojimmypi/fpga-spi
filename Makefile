@@ -153,9 +153,10 @@ sim:
 
 ## if we are running in WSL, we need a bit of help for GUI XWindows: copy .Xauthority file locally.
 ## sometimes the WSL username is not the same as the Windows username, and we need the windows user path.
-## this is the Windows %USER% environment variable when called from makefile: $(shell cmd.exe /c "echo $$USER")
+## this is the Windows %USERNAME% environment variable when called from makefile: $(shell cmd.exe /c "echo %USERNAME%")
+## not to be confused with the local $USER which may be different!
 	@if [ "$(shell grep Microsoft /proc/version)" != "" ]; then   \
-		cp /mnt/c/cygwin64/home/$(shell cmd.exe /c "echo $$USER")/.Xauthority   ~/.Xauthority; \
+		cp /mnt/c/cygwin64/home/$(shell cmd.exe /c "echo %USERNAME%")/.Xauthority   ~/.Xauthority; \
     fi
 
 	(gtkwave $(PROJ).vcd $(PROJ)_savefile.gtkw)&
@@ -166,7 +167,7 @@ xserver:
 		echo "Launching Windows XServer from WSL...";             \
 		(/mnt/c/cygwin64/bin/run.exe --quote /usr/bin/bash.exe -l -c " exec /usr/bin/startxwin -- -listen tcp -nowgl")&  \
 	else                                                          \
-		echo "Not launching WSL XServer!" ;                                             \
+		echo "Not launching WSL XServer!" ;                       \
     fi
 
 install:
