@@ -1,5 +1,4 @@
 PROJ = fpga-spi
-TOP_MOD_FILE = spi_driver
 PIN_DEF = ulx3s_v20.lpf
 DEVICE = up5k
 LUT_SIZE = 25k
@@ -14,7 +13,7 @@ IS_WSL = 0
 
 
 # Verilator
-
+# ensure the case matches between filename and top module name!
 TOPMOD  := SPI_driver
 VLOGFIL := $(TOPMOD).v
 VCDFILE := $(TOPMOD).vcd
@@ -110,7 +109,7 @@ all: $(PROJ).bit
                  --textcfg $(PROJ)_out.config --log  $(PROJ).nextpnr-ecp5.log
 		
 
-%.json: $(PROJ).ys $(TOP_MOD_FILE).v
+%.json: $(PROJ).ys $(TOP_MOD).v
 	@printf "\n\n yosys ... \n\n "
 	yosys $(PROJ).ys | tee $(PROJ).yosys.log
 
@@ -147,7 +146,7 @@ clean:
 
 sim: 
 	rm -f $(PROJ).vcd
-	iverilog  -o $(PROJ).vvp spi.v spi_tb.v
+	iverilog  -o $(PROJ).vvp $(TOPMOD).v $(TOPMOD)_tb.v
 	vvp $(PROJ).vvp
 	export DISPLAY=:0
 
@@ -159,8 +158,9 @@ sim:
 		cp /mnt/c/cygwin64/home/$(shell cmd.exe /c "echo %USERNAME%")/.Xauthority   ~/.Xauthority; \
     fi
 
-	(gtkwave $(PROJ).vcd $(PROJ)_savefile.gtkw)&
-
+	# spawn a new process for gtkwave
+	(export DISPLAY=:0;                        \
+	 gtkwave $(PROJ).vcd $(PROJ)_savefile.gtkw	)&
 xserver:
 ## launch the Windows cygwin64 startxwin when WSL iss detected
 	@if [ "$(shell grep Microsoft /proc/version)" != "" ]; then   \
