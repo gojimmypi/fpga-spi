@@ -18,6 +18,9 @@ module SPI_slave_tb;
   
   initial
   begin
+	$dumpfile("fpga-spi.vcd");
+	 $dumpvars(1,clk, sck, mosi, miso, ssel, byteReceived, receivedData, dataNeeded, dataToSend );
+	 $dumpon;
     sck = 1'b0;
     mosi = 1'b0;
     ssel = 1'b1;
@@ -50,7 +53,6 @@ module SPI_slave_tb;
     #10 mosi = 1'b0; #10 sck = 1'b0; #10 sck = 1'b1; #10 misoData <= { misoData[6:0], miso }; // bit 7
     #10
     $display("assertEquals(misoData,0x%h,0x%h)", expectedDataToSend, misoData);
-    
     #100 $finish;
   end
 
