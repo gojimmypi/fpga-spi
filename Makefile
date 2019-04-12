@@ -161,6 +161,7 @@ sim:
 	# spawn a new process for gtkwave
 	(export DISPLAY=:0;                        \
 	 gtkwave $(PROJ).vcd $(PROJ)_savefile.gtkw	)&
+
 xserver:
 ## launch the Windows cygwin64 startxwin when WSL iss detected
 	@if [ "$(shell grep Microsoft /proc/version)" != "" ]; then   \

@@ -19,8 +19,8 @@ module SPI_slave_tb;
   initial
   begin
 	$dumpfile("fpga-spi.vcd");
-	 $dumpvars(1,clk, sck, mosi, miso, ssel, byteReceived, receivedData, dataNeeded, dataToSend );
-	 $dumpon;
+	$dumpvars(1,clk, sck, mosi, miso, ssel, byteReceived, receivedData, dataNeeded, dataToSend );
+	$dumpon;
     sck = 1'b0;
     mosi = 1'b0;
     ssel = 1'b1;
