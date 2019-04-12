@@ -1,33 +1,54 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Fri Apr 12 22:45:47 2019
+[*] Fri Apr 12 22:57:29 2019
 [*]
 [dumpfile] "/mnt/c/workspace-git/fpga-spi/fpga-spi.vcd"
-[dumpfile_mtime] "Fri Apr 12 22:40:45 2019"
+[dumpfile_mtime] "Fri Apr 12 22:53:15 2019"
 [dumpfile_size] 9495
 [savefile] "/mnt/c/workspace-git/fpga-spi/fpga-spi_savefile.gtkw"
-[timestart] 0
-[size] 1376 600
-[pos] 1899 350
-*-13.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[timestart] 281160
+[size] 1953 837
+[pos] 2134 949
+*-13.000000 43000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [sst_width] 213
 [signals_width] 166
 [sst_expanded] 1
-[sst_vpaned_height] 151
+[sst_vpaned_height] 234
 @28
 SPI_slave_tb.byteReceived
 SPI_slave_tb.clk
 SPI_slave_tb.dataNeeded
-@22
+@800023
 SPI_slave_tb.dataToSend[7:0]
+@29
+(0)SPI_slave_tb.dataToSend[7:0]
+(1)SPI_slave_tb.dataToSend[7:0]
+(2)SPI_slave_tb.dataToSend[7:0]
+(3)SPI_slave_tb.dataToSend[7:0]
+(4)SPI_slave_tb.dataToSend[7:0]
+(5)SPI_slave_tb.dataToSend[7:0]
+(6)SPI_slave_tb.dataToSend[7:0]
+(7)SPI_slave_tb.dataToSend[7:0]
+@1001201
+-group_end
 @28
 SPI_slave_tb.miso
 SPI_slave_tb.mosi
-@22
+@800022
 SPI_slave_tb.receivedData[7:0]
 @28
+(0)SPI_slave_tb.receivedData[7:0]
+(1)SPI_slave_tb.receivedData[7:0]
+(2)SPI_slave_tb.receivedData[7:0]
+(3)SPI_slave_tb.receivedData[7:0]
+(4)SPI_slave_tb.receivedData[7:0]
+(5)SPI_slave_tb.receivedData[7:0]
+(6)SPI_slave_tb.receivedData[7:0]
+(7)SPI_slave_tb.receivedData[7:0]
+@1001200
+-group_end
+@28
 SPI_slave_tb.sck
-@29
 SPI_slave_tb.ssel
 [pattern_trace] 1
 [pattern_trace] 0
