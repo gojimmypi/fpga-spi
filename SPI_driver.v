@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-`include "spi.v"
+`include "SPI_slave.v"
 
 module SPI_driver(clk_25mhz, sck, mosi, miso, ssel, led);
   input wire clk_25mhz;
